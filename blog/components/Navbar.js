@@ -1,17 +1,23 @@
+import Sidebar from "@/components/Sidebar";
+import IconMenuRight from "@/components/icon/MenuIcon";
+
 export default function Navbar() {
-    return (
-        <div className="navbar navbar-glass">
-	<div className="navbar-start">
-		<a className="navbar-item">Ripple UI</a>
-	</div>
-	<div className="hidden lg:block navbar-center">
-		<a className="navbar-item">Smartphone</a>
-		<a className="navbar-item">Laptop</a>
-		<a className="navbar-item">PC</a>
-	</div>
-	<div className="navbar-end">
-		<a className="hidden lg:block navbar-item">Home</a>
-	</div>
-</div>
-    )
+  return (
+    <>
+      <div className="navbar navbar-glass sticky top-0">
+        <div className="navbar-start">
+          <a className="navbar-item">Tech Blog</a>
+        </div>
+        <div className="navbar-end">
+          <a className="navbar-item hidden md:block">Smartphone</a>
+          <a className="navbar-item hidden md:block">Laptop</a>
+          <a className="navbar-item hidden md:block">PC</a>
+          <label htmlFor="sidebar-mobile-fixed" className="md:hidden">
+            <IconMenuRight />
+          </label>
+        </div>
+      </div>
+      <Sidebar />
+    </>
+  );
 }
