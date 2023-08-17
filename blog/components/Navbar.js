@@ -1,12 +1,15 @@
 import Sidebar from "@/components/Sidebar";
 import IconMenuRight from "@/components/icon/MenuIcon";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
     <>
-      <div className="navbar navbar-glass sticky top-0">
+      <div className="navbar navbar-glass sticky top-0 z-50">
         <div className="navbar-start">
-          <a className="navbar-item">Tech Blog</a>
+          <Link href="/" className="navbar-item">
+            Tech Blog
+          </Link>
         </div>
         <div className="navbar-end">
           <a className="navbar-item hidden md:block">Smartphone</a>
