@@ -1,6 +1,7 @@
-async function getData() {
+async function getPostBySlug(slug) {
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.API_KEY}`
+    `https://demo.ghost.io/ghost/api/content/posts/slug/${slug}/?key=${process.env.API_KEY}&include=tags,authors`,
+    { next: { revalidate: 1 } }
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -13,4 +14,4 @@ async function getData() {
   return res.json();
 }
 
-export default getData;
+export default getPostBySlug;

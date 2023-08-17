@@ -1,23 +1,36 @@
-import Navbar from "@/components/Navbar";
 import Card from "@/components/Card";
-import Footer from "@/components/Footer";
+import HeroPost from "@/components/HeroPost";
 
-import getData from "@/lib/getData";
+import getAllPost from "@/lib/getAllPost";
+
+export const metadata = {
+  title: "Tech Blog",
+  description:
+    "Reporting on the business of technology, startups, venture capital funding, and Silicon Valley.",
+};
 
 export default async function Home() {
-  const data = await getData();
-  const { articles } = data;
+  const data = await getAllPost();
+  const { posts } = data;
 
   return (
     <>
-      <Navbar />
+      <HeroPost posts={posts} />
       <div className="container px-4 py-8 mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map((article) => {
-          const { title, urlToImage } = article;
-          return <Card key={title} title={title} image={urlToImage} />;
+        {posts.map((post) => {
+          const { title, slug, feature_image } = post;
+          return (
+            <>
+              <Card
+                key={title}
+                title={title}
+                image={feature_image}
+                url={slug}
+              />
+            </>
+          );
         })}
       </div>
-      <Footer />
     </>
   );
 }
