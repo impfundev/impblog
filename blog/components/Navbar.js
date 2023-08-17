@@ -7,7 +7,7 @@ export default function Navbar() {
     <>
       <div className="navbar navbar-glass sticky top-0 z-50">
         <div className="navbar-start">
-          <Link href="/" className="navbar-item">
+          <Link href="/" className="navbar-item font-bold">
             Tech Blog
           </Link>
         </div>

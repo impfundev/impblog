@@ -8,7 +8,7 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <article className="container mx-auto w-[65vw] py-8 flex flex-col gap-8 items-center">
+      <article className="container mx-auto px-6 max-w-4xl py-8 flex flex-col gap-8 items-center">
         <h1 className="card-header font-bold text-2xl md:text-4xl lg:text-6xl">
           {post.title}
         </h1>
