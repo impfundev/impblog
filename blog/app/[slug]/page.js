@@ -1,31 +1,23 @@
 import getAllPost from "@/lib/getAllPost";
 import getPostBySlug from "@/lib/getPostBySlug";
 
+import HeaderPost from "@/components/HeaderPost";
+import ContentPost from "@/components/ContentPost";
+import RelatedPost from "@/components/RelatedPost";
+
 export default async function Post({ params }) {
   const data = await getPostBySlug(params.slug);
+  const allPost = await getAllPost();
   const { posts } = data;
   const post = posts[0];
+  const tagName = post.tags.map((tag) => tag.name).slice(0, 1);
 
   return (
     <>
-      <article className="container mx-auto px-6 max-w-4xl py-8 flex flex-col gap-8 items-center">
-        <h1 className="card-header font-bold text-2xl md:text-4xl lg:text-6xl">
-          {post.title}
-        </h1>
-        <p className="card-footer text-md md:text-xl">{post.excerpt}</p>
-        <img
-          className="w-full h-auto object-cover rounded-2xl"
-          src={post.feature_image}
-          alt={post.title}
-        />
-        <small
-          className="text-sm md:text-base"
-          dangerouslySetInnerHTML={{ __html: post.feature_image_caption }}
-        />
-        <div
-          className="prose lg:prose-xl"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+      <article className="container mx-auto px-6 py-8 flex flex-col gap-8 items-center">
+        <HeaderPost post={post} />
+        <ContentPost content={post.html} />
+        <RelatedPost allPost={allPost} tagName={tagName} />
       </article>
     </>
   );
