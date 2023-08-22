@@ -18,27 +18,30 @@ export default function HeroPost({ posts }) {
         .map((post) => {
           const { title, slug, excerpt, feature_image } = post;
           return (
-            <SplideSlide key={title}>
-              <Link
-                href={`/${slug}`}
-                className="relative flex flex-col gap-4 items-center"
-              >
-                <img
-                  className="w-full h-screen object-cover bg-black opacity-30"
-                  src={feature_image}
-                  alt={title}
-                />
-                <div className="absolute top-1/2 -translate-y-1/2 flex flex-col gap-4 items-center w-1/2 text-center">
-                  <h2 className="card-header font-bold text-xl md:text-4xl">
-                    {title}
-                  </h2>
-                  <p className="card-footer hidden md:block">{excerpt}</p>
+            <>
+              <SplideSlide key={title}>
+                <div className="relative flex flex-col gap-4 items-center bg-black">
+                  <img
+                    className="w-full h-[83vh] object-cover opacity-40"
+                    src={feature_image}
+                    alt={title}
+                  />
+
+                  <div className="absolute top-1/2 -translate-y-1/2 flex flex-col gap-4 items-center w-1/2 text-center text-white">
+                    <h2 className="font-bold text-xl md:text-4xl tracking-wider">
+                      {title}
+                    </h2>
+                    <p className="hidden md:block">{excerpt}</p>
+                    <Link href={`/${slug}`} className="btn btn-primary">
+                      Read More
+                    </Link>
+                  </div>
                 </div>
-              </Link>
-            </SplideSlide>
+              </SplideSlide>
+            </>
           );
         })
-        .slice(0, 5)}
+        .slice(0, 10)}
     </Splide>
   );
 }

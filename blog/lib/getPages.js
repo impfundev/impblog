@@ -1,6 +1,6 @@
-async function getAllPost() {
+async function getPages() {
   const res = await fetch(
-    `https://demo.ghost.io/ghost/api/content/posts/?key=${process.env.API_KEY}&include=tags,authors`,
+    `https://demo.ghost.io/ghost/api/content/pages/?key=${process.env.API_KEY}&include=tags,authors`,
     { next: { revalidate: 1 } }
   );
   // The return value is *not* serialized
@@ -14,4 +14,4 @@ async function getAllPost() {
   return res.json();
 }
 
-export default getAllPost;
+export default getPages;

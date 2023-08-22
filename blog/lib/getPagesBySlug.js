@@ -1,7 +1,6 @@
-async function getAllPost() {
+async function getPagesBySlug(slug) {
   const res = await fetch(
-    `https://demo.ghost.io/ghost/api/content/posts/?key=${process.env.API_KEY}&include=tags,authors`,
-    { next: { revalidate: 1 } }
+    `https://demo.ghost.io/ghost/api/content/pages/slug/${slug}/?key=${process.env.API_KEY}`
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -14,4 +13,4 @@ async function getAllPost() {
   return res.json();
 }
 
-export default getAllPost;
+export default getPagesBySlug;
