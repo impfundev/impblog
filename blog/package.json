@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
+    "disqus-react": "^1.1.5",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "next": "13.4.16",

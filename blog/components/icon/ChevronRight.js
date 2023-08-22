@@ -4,8 +4,8 @@ function IconChevronRight() {
       fill="currentColor"
       viewBox="0 0 16 16"
       className="text-gray-400"
-      width="16"
-      height="16"
+      width="10"
+      height="10"
     >
       <path
         fillRule="evenodd"

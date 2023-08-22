@@ -8,7 +8,6 @@ export default function RelatedPost({ allPost, tagName }) {
     /* Optional options */
     threshold: 0,
   });
-  console.log(inView);
   return (
     <>
       <h3 className="text-xl md:text-2xl font-bold">Related</h3>
