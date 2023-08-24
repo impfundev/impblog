@@ -6,5 +6,9 @@ export default function LazyImage(props) {
     /* Optional options */
     threshold: 0,
   });
-  return <div ref={ref}>{inView && <img {...props} />}</div>;
+  return (
+    <div className="w-full" ref={ref}>
+      {inView && <img {...props} />}
+    </div>
+  );
 }

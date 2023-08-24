@@ -1,16 +1,15 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
-const LazyImage = dynamic(() => import("./LazyImage"), {
-  ssr: false,
-});
+import Image from "next/image";
 
-export default function Card({ title, image, url }) {
+export default function Card({ title, image, url, width, heigh }) {
   return (
     <Link href={`/${url}`} className="flex flex-col gap-4">
-      <LazyImage
-        className="w-full h-56 object-cover rounded-2xl"
+      <Image
+        className="w-full h-auto object-cover rounded-2xl"
         src={image}
         alt={title}
+        width={width}
+        height={heigh}
       />
       <h2 className="card-header">{title}</h2>
     </Link>

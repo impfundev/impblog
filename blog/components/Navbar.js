@@ -1,3 +1,4 @@
+"use client";
 import Sidebar from "@/components/Sidebar";
 import IconMenuRight from "@/components/icon/MenuIcon";
 import Link from "next/link";
@@ -12,9 +13,15 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="navbar-end">
-          <a className="navbar-item hidden md:block">Smartphone</a>
-          <a className="navbar-item hidden md:block">Laptop</a>
-          <a className="navbar-item hidden md:block">PC</a>
+          <Link href="#" className="navbar-item hidden md:block">
+            Smartphone
+          </Link>
+          <Link href="#" className="navbar-item hidden md:block">
+            Laptop
+          </Link>
+          <Link href="#" className="navbar-item hidden md:block">
+            PC
+          </Link>
           <label htmlFor="sidebar-mobile-fixed" className="md:hidden">
             <IconMenuRight />
           </label>

@@ -14,8 +14,10 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "next": "13.4.16",
+    "probe-image-size": "^7.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-image-size": "^2.0.2",
     "react-intersection-observer": "^9.5.2"
   },
   "devDependencies": {
