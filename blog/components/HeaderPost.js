@@ -60,7 +60,7 @@ export default function HeaderPost({ post, imageSize }) {
           alt={post.title}
           priority={true}
           quality={65}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 1200px) 100vw, (max-width: 600px) 50vw, 33vw"
           width={imageSize.width}
           height={imageSize.height}
         />
