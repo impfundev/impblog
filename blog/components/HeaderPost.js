@@ -1,6 +1,7 @@
 import IconChevronRight from "@/components/icon/ChevronRight";
+import Image from "next/image";
 
-export default function HeaderPost({ post }) {
+export default function HeaderPost({ post, imageSize }) {
   return (
     <div className="flex flex-col gap-4 md:gap-8 items-center">
       <div className="flex flex-col gap-4">
@@ -47,10 +48,12 @@ export default function HeaderPost({ post }) {
         </p>
       </div>
       <div className="flex flex-col gap-3">
-        <img
+        <Image
           className="w-full h-auto object-cover rounded-2xl"
           src={post.feature_image}
           alt={post.title}
+          width={imageSize.width}
+          height={imageSize.height}
         />
         <small
           className="text-sm md:text-base"
