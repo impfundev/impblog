@@ -9,13 +9,13 @@ export default function Card({ title, image, url, width, heigh, lazy }) {
         priority={lazy ? false : true}
         quality={50}
         src={image}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 380px) 33vw"
         alt={title}
         width={width}
         height={heigh}
         loading={lazy ? "lazy" : "eager"}
       />
-      <h2 className="card-header">{title}</h2>
+      <h2 className="text-md font-bold tracking-wider">{title}</h2>
     </Link>
   );
 }

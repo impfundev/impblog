@@ -12,7 +12,7 @@ export default function HeaderPost({ post, imageSize }) {
               <Link
                 aria-label="Back to homepage"
                 href="#"
-                className="text-gray-400 hover:text-blue-600"
+                className="hover:text-blue-600"
               >
                 <svg
                   className="w-3 h-3"
@@ -33,8 +33,8 @@ export default function HeaderPost({ post, imageSize }) {
                     return (
                       <Link
                         key={tag.slug}
-                        href={tag.slug}
-                        className="text-sm font-medium text-gray-400 hover:text-blue-600"
+                        href={`/tag/${tag.slug}`}
+                        className="text-sm font-medium hover:text-blue-600"
                         aria-label="Go to tag page to find related article"
                       >
                         {tag.name}
@@ -60,7 +60,7 @@ export default function HeaderPost({ post, imageSize }) {
           alt={post.title}
           priority={true}
           quality={65}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 1200px) 100vw, , (max-width: 600px) 50vw, (max-width: 300px) 33vw"
           width={imageSize.width}
           height={imageSize.height}
         />
