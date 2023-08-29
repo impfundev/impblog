@@ -5,7 +5,7 @@ export default function Card({ title, image, url, width, heigh, lazy }) {
   return (
     <Link href={`/${url}`} className="flex flex-col gap-4">
       <Image
-        className="w-full h-auto object-cover rounded-2xl"
+        className="w-full h-auto max-h-56 object-cover rounded-2xl"
         priority={lazy ? false : true}
         quality={50}
         src={image}
