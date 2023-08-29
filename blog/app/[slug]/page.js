@@ -7,7 +7,7 @@ import getPostBySlug from "@/lib/getPostBySlug";
 import HeaderPost from "@/components/HeaderPost";
 import ContentPost from "@/components/ContentPost";
 import RelatedPost from "@/components/RelatedPost";
-const Comment = dynamic(() => import("@/components/Comment"), { ssr: false });
+import Comment from "@/components/Comment";
 
 export default async function Post({ params }) {
   const data = await getPostBySlug(params.slug);
