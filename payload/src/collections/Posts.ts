@@ -1,8 +1,7 @@
 import { CollectionConfig } from 'payload/types';
-import Content from '../blocks/Content';
-import { Media } from '../blocks/Media';
-import MediaContent from '../blocks/MediaContent';
-import MediaSlider from '../blocks/MediaSlider';
+import richText from '../fields/richText';
+import Video from '../fields/richText/video';
+import HR from '../fields/richText/hr';
 
 const Posts: CollectionConfig = {
   // the slug is used for naming the collection in the database and the APIs that are open. For example: api/posts/${id}
@@ -11,18 +10,11 @@ const Posts: CollectionConfig = {
     // this is the name of a field which will be visible for the edit screen and is also used for relationship fields
     useAsTitle: 'title',
     // defaultColumns is used on the listing screen in the admin UI for the collection
-    defaultColumns: [
-      'title',
-      'category',
-      'publishDate',
-      'tags',
-      'status'
-    ],
-    group: 'Content'
+    defaultColumns: ['title', 'category', 'publishDate', 'tags', 'status'],
+    group: 'Content',
   },
   access: {
     read: ({ req: { user } }) => {
-
       // users who are authenticated will see all posts
       if (user) {
         return true;
@@ -55,6 +47,11 @@ const Posts: CollectionConfig = {
       localized: true,
     },
     {
+      name: 'excerpt',
+      type: 'textarea',
+      localized: true,
+    },
+    {
       name: 'category',
       type: 'relationship',
       relationTo: 'categories',
@@ -65,25 +62,18 @@ const Posts: CollectionConfig = {
       // allow selection of one or more categories
       hasMany: true,
     },
-    {
-      name: 'layout',
-      label: 'Page Layout',
-      type: 'blocks',
-      minRows: 1,
-      // the blocks are reusable objects that will be added in array to the document, these are especially useful for structuring content purpose built for frontend componentry
-      blocks: [
-        Content,
-        Media,
-        MediaContent,
-        MediaSlider,
-      ],
-    },
+    richText(
+      {},
+      {
+        elements: ['ol', 'ul', 'indent', 'relationship', 'upload', Video, HR],
+      },
+    ),
     {
       name: 'author',
       type: 'relationship',
       relationTo: 'users',
       // defaultValues can use functions to return data to populate the create form and also when making POST requests the server will use the value or function to fill in any undefined fields before validation occurs
-      defaultValue: ({ user }) => (user.id),
+      defaultValue: ({ user }) => user.id,
       admin: {
         position: 'sidebar',
       },
@@ -95,9 +85,9 @@ const Posts: CollectionConfig = {
         position: 'sidebar',
         description: 'Posts will not be public until this date',
       },
-      defaultValue: () => (new Date()),
+      defaultValue: () => new Date(),
     },
   ],
-}
+};
 
 export default Posts;

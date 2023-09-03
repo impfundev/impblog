@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import Categories from './collections/Categories';
 import Media from './collections/Media';
 import Posts from './collections/Posts';
-import { Users } from './collections/Users';
+import Users from './collections/Users';
 import Pages from './collections/Pages';
 import MainMenu from './globals/MainMenu';
 import BeforeLogin from './components/BeforeLogin';
@@ -48,13 +48,10 @@ export default buildConfig({
       ...config,
       resolve: {
         ...config.resolve,
-        alias: [path.resolve(__dirname, 'endpoints/readPayloadVersion')].reduce(
-          (alias, aliasPath) => ({
-            ...alias,
-            [aliasPath]: mockModulePath,
-          }),
-          config.resolve.alias,
-        ),
+        alias: {
+          ...config.resolve?.alias,
+          express: mockModulePath,
+        },
       },
     }),
   },
@@ -68,8 +65,7 @@ export default buildConfig({
   // rateLimits provide basic API DDOS (Denial-of-service) protection and can limit accidental server load from scripts
   rateLimit: {
     trustProxy: true,
-    window: 2 * 60 * 1000, // 2 minutes
-    max: 2400, // limit each IP per windowMs
+    max: 4000,
   },
 
   // GraphQL is included by default at /api/graphql

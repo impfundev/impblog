@@ -6,6 +6,8 @@ require('dotenv').config({
   path: path.resolve(__dirname, '../.env'),
 });
 
+// import { seed } from './seed';
+
 const app = express();
 
 // Redirect all traffic at root to admin UI
@@ -19,13 +21,22 @@ const start = async () => {
     secret: process.env.PAYLOAD_SECRET_KEY,
     mongoURL: process.env.MONGO_URL,
     mongoOptions: {
-      user: 'Ilhammaulana',
-      pass: '1B2vAuTHDmGaWH20',
+      user: process.env.MONGO_USERNAME,
+      pass: process.env.MONGO_PASSWORD,
     },
     express: app,
+    onInit: () => {
+      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+    },
   });
 
-  app.listen(process.env.PORT);
+  // if (process.env.PAYLOAD_SEED === 'true') {
+  //   payload.logger.info('Seeding Payload...');
+  //   await seed(payload);
+  //   payload.logger.info('Done.');
+  // }
+
+  app.listen(process.env.PORT || 8000);
 };
 
 start();
