@@ -1,8 +1,7 @@
-async function getPostBySlug(slug) {
-  const res = await fetch(
-    `https://demo.ghost.io/ghost/api/content/posts/slug/${slug}/?key=${process.env.API_KEY}&include=tags,authors`,
-    { next: { revalidate: 1 } }
-  );
+async function getPostBySlug(id) {
+  const res = await fetch(`http://localhost:8000/api/posts/${id}`, {
+    next: { revalidate: 1 },
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 

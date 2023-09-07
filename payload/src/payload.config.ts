@@ -14,7 +14,7 @@ import BeforeLogin from './components/BeforeLogin';
 import AfterDashboard from './components/AfterDashboard';
 import { Alerts } from './collections/Alerts';
 import BeforeDashboard from './components/BeforeDashboard';
-import { readPayloadVersion } from './endpoints/readPayloadVersion';
+// import { readPayloadVersion } from './endpoints/readPayloadVersion';
 import { Version } from './components/DisplayVersion';
 
 dotenv.config({
@@ -115,13 +115,13 @@ export default buildConfig({
     locales: ['en', 'es', 'de'],
   },
 
-  endpoints: [
-    {
-      method: 'get',
-      path: '/payload-version',
-      handler: readPayloadVersion,
-    },
-  ],
+  // endpoints: [
+  //   {
+  //     method: 'get',
+  //     path: '/payload-version',
+  //     handler: readPayloadVersion,
+  //   },
+  // ],
 
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

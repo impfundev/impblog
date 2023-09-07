@@ -2,7 +2,7 @@ import IconChevronRight from "@/components/icon/ChevronRight";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HeaderPost({ post, imageSize }) {
+export default function HeaderPost({ post }) {
   return (
     <div className="flex flex-col gap-4 md:gap-8 items-center">
       <div className="flex flex-col gap-4">
@@ -28,16 +28,16 @@ export default function HeaderPost({ post, imageSize }) {
             <li>
               <div className="flex gap-1 items-center">
                 <IconChevronRight />
-                {post.tags
-                  .map((tag) => {
+                {post.category
+                  .map((cat) => {
                     return (
                       <Link
-                        key={tag.slug}
-                        href={`/tag/${tag.slug}`}
+                        key={cat.id}
+                        href={`/tag/${cat.name.toLowerCase()}`}
                         className="text-sm font-medium hover:text-blue-600"
                         aria-label="Go to tag page to find related article"
                       >
-                        {tag.name}
+                        {cat.name}
                       </Link>
                     );
                   })
@@ -56,17 +56,17 @@ export default function HeaderPost({ post, imageSize }) {
       <div className="flex flex-col gap-3">
         <Image
           className="w-full h-auto object-cover rounded-2xl"
-          src={post.feature_image}
+          src={post.thumbnail.url}
           alt={post.title}
           priority={true}
           quality={65}
           sizes="(max-width: 1200px) 100vw, , (max-width: 600px) 50vw, (max-width: 300px) 33vw"
-          width={imageSize.width}
-          height={imageSize.height}
+          width={post.thumbnail.width}
+          height={post.thumbnail.height}
         />
         <small
           className="text-sm md:text-base"
-          dangerouslySetInnerHTML={{ __html: post.feature_image_caption }}
+          dangerouslySetInnerHTML={{ __html: post.thumbnail.alt }}
         />
       </div>
     </div>
