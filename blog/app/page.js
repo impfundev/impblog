@@ -1,5 +1,4 @@
 import Card from "@/components/Card";
-import probe from "probe-image-size";
 
 import getAllPost from "@/lib/getAllPost";
 
@@ -11,22 +10,21 @@ export const metadata = {
 
 export default async function Home() {
   const data = await getAllPost();
-  const { posts } = data;
+  const { docs } = data;
   return (
     <>
       <div className="container px-4 py-8 mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts
+        {docs
           .map(async (post) => {
-            const { title, slug, feature_image } = post;
-            let imageSize = await probe(feature_image);
+            const { title, slug, thumbnail } = post;
             return (
               <>
                 <Card
                   key={title}
                   title={title}
-                  image={imageSize.url}
-                  width={imageSize.width}
-                  heigh={imageSize.height}
+                  image={thumbnail.url}
+                  width={thumbnail.width}
+                  heigh={thumbnail.height}
                   url={slug}
                   lazy={false}
                 />
@@ -34,18 +32,17 @@ export default async function Home() {
             );
           })
           .slice(0, 6)}
-        {posts
+        {docs
           .map(async (post) => {
-            const { title, slug, feature_image } = post;
-            let imageSize = await probe(feature_image);
+            const { title, slug, thumbnail } = post;
             return (
               <>
                 <Card
                   key={title}
                   title={title}
-                  image={imageSize.url}
-                  width={imageSize.width}
-                  heigh={imageSize.height}
+                  image={thumbnail.url}
+                  width={thumbnail.width}
+                  heigh={thumbnail.height}
                   url={slug}
                   lazy={true}
                 />

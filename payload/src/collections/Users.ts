@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload/types';
 import { isAdmin, isAdminFieldLevel } from '../access/isAdmin';
 import { isAdminOrSelf, isAdminOrSelfFieldLevel } from '../access/isAdminOrSelf';
 
-export const Users: CollectionConfig = {
+const Users: CollectionConfig = {
   slug: 'users',
   auth: {
     tokenExpiration: 28800, // 8 hours
@@ -72,3 +72,5 @@ export const Users: CollectionConfig = {
     },
   ],
 };
+
+export default Users;

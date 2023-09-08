@@ -7,10 +7,7 @@ import Icon from '../Icon';
 const baseClass = 'rich-text-large-body-button';
 
 const ToolbarButton: React.FC<{ path: string }> = () => (
-  <ElementButton
-    className={baseClass}
-    format="large-body"
-  >
+  <ElementButton className={baseClass} format="large-body">
     <Icon />
   </ElementButton>
 );

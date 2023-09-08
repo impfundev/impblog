@@ -7,10 +7,10 @@ module.exports = {
     imageSizes: [16, 32, 37, 42, 76, 102, 144, 256],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "demo.ghost.io",
-        port: "",
-        pathname: "/**",
+        protocol: "http",
+        hostname: "localhost",
+        port: "8000",
+        pathname: "/media/**",
       },
     ],
   },

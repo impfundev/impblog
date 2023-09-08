@@ -1,7 +1,5 @@
 async function getPagesBySlug(slug) {
-  const res = await fetch(
-    `https://demo.ghost.io/ghost/api/content/pages/slug/${slug}/?key=${process.env.API_KEY}`
-  );
+  const res = await fetch(`http://localhost:8000/api/posts/${slug}`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
